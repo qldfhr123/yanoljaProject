@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.care.yanolja.review.ReviewMapper">
+  	<resultMap type="com.care.yanolja.review.ReviewDTO" id="reviewDto">
+  		<id column="review_point" property="reviewPoint"/>  
+  		<result column="rese_num" property="reseNum"/>
+  		<result column="room_name" property="roomName"/>
+  		<result column="host_name" property="hostName"/>
+  		<result column="user_id" property="userId"/>
+  		<result column="content" property="content"/>
+  		<result column="write_date" property="writeDate"/>  	
+  		<result column="admin_id" property="adminId"/>  	
+  		<result column="admin_content" property="adminContent"/>  	
+  		<result column="admin_write_date" property="adminWriteDate"/>  	
+  	</resultMap>
+  
+  
+  <select id="reviewCheckProc" resultMap="reviewDto">
+  	SELECT * FROM review WHERE host_name=#{hostName}  ORDER BY `write_date` DESC LIMIT 1000;
+  </select>
+  
+  <select id="reviewCheckProcStars" resultMap="reviewDto">
+  	SELECT * FROM review WHERE host_name=#{hostName}  ORDER BY `review_point` DESC LIMIT 1000;
+  </select>
+  
+  <update id="answerUpload" parameterType="com.care.yanolja.review.ReviewDTO">
+  	UPDATE review SET admin_content=#{adminContent}, admin_write_date=#{adminWriteDate} WHERE rese_num=#{reseNum} 
+  </update>
+  
+  <update id="answerModify" parameterType="com.care.yanolja.review.ReviewDTO">
+  	UPDATE review SET admin_content=#{adminContent}, admin_write_date=#{adminWriteDate} WHERE rese_num=#{reseNum} 
+  </update>
+  
+  <update id="answerDelete" parameterType="com.care.yanolja.review.ReviewDTO">
+  	UPDATE review SET admin_content = '', admin_write_date = ''  WHERE rese_num=#{reseNum}
+  </update>
+  
+  </mapper>

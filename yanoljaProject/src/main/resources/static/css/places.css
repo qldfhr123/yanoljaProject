@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+
+/*places.jsp ********************************************************************/
+.placesInfo > span {display:inline-block; margin-bottom:10px;}
+.placesInfo > span > img{width:100%;}
+.placesInfo > h2,
+.placesInfo > p {font-size:24px; font-weight:500; margin-bottom:10px; margin-left:30px;}
+.placesInfo > p > span{display:inline-block; margin-right:10px; color:#F6C800;}
+.placesInfo > h4 {font-size:22px; font-weight:500; margin:0 30px; padding:10px 0;
+border-top:1px solid #ddd;}
+.popularService{font-size:0; ; margin-bottom:40px; margin:0 30px; padding-bottom:20px;
+border-bottom: 1px solid #ddd;}
+.popularService > li{display:inline-block; font-size:18px; font-weight:400; 
+ height:45px; line-height:45px; margin-right:15px; margin-bottom:20px; text-align:center;
+ box-sizing:border-box; -webkit-box-sizing:border-box; }
+.popularService > li > p{margin-top:-15px;}
+
+.placesMenu {font-size:0; margin-top:20px; margin-bottom:40px; padding-left:30px;}
+.placesMenu > li{display:inline-block; font-size:22px; font-weight:400; }
+.placesMenu > li > a {padding:10px;}
+.placesMenu > li:hover > a{color:#0071BC; border-bottom:1px solid #0071BC; }
+
+.ReservationInfoPlace > ul {font-size:0; ; margin-bottom:10px; padding-left:30px; padding-bottom:20px;}
+.ReservationInfoPlace > ul > li{display:inline-block; font-size:21px; font-weight:500; 
+ height:45px; line-height:45px; padding:0 10px; margin-right:15px;
+ border: 2px solid #000;
+ border-radius: 10px; -webkit-border-radius:10px; -moz-border-radius:10px;}
+.ReservationInfoPlace > ul > li > div{font-size:0;}
+.ReservationInfoPlace > ul > li > div > span{display:inline-block; margin-right:5px; }
+.ReservationInfoPlace > ul > li img{width:25px; margin-top:-5px;}
+.ReservationInfoPlace > ul > li > div > span,
+.ReservationInfoPlace > ul > li > div > p{display:inline-block; font-size:20px; }
+.ReservationInfoPlace > ul > li:hover {border:2px solid #de2e5f;}
+.ReservationInfoPlace > ul > li:hover > div > p{color:#de2e5f;}
+
+.roomList > ul {font-size:0; ; margin-bottom:10px; width:100%;}
+.roomList > ul > li{display:inline-block; width:380px; font-size:18px; font-weight:500; 
+ margin: 0 10px; border: 1px solid #ddd; margin-bottom:20px;
+ box-sizing:border-box; -webkit-box-sizing:border-box; }
+.roomList > ul > li img{width:100%;}
+.roomList > ul > li > div > span{display:inline-block; margin-bottom:10px;}
+.roomList > ul > li > div > p{margin-left:15px; margin-bottom:5px; font-size:22px;}
+.roomList > ul > li > div > p + p{margin-left:0; padding-left:15px; font-size:18px;}
+.roomList > ul > li > div > ul {font-size:0; }
+.roomList > ul > li > div > ul > li{display:inline-block; width:50%; font-size:18px;
+text-align:right; padding: 20px 10px; box-sizing:border-box; -webkit-box-sizing:border-box; }
+.roomList > ul > li > div > ul > li > p + p {font-size:23px; margin-top:5px;}
+.roomList > ul > li > div > a{display:block; width:150px; height:40px; line-height:40px; color:#fff; font-size:18px; text-align:center; border-radius:10px; margin: 0 0 20px
+210px; background-color:#de2e5f;}
+
+
+
+/*placesDetail.jsp ********************************************************************/
+/*placeDetailView*/
+.placeDetailView {border:1px solid #ddd; margin-bottom:15px;}
+.placeDetailView img{width:100%;}
+.placeDetailView > span {display:inline-block; margin-bottom:15px;}
+
+.placesDetail input[type="text"]{border:none;}
+#placesDetail_room_name{font-size:30px; font-weight:700; margin-bottom:20px;}
+#placesDetail_house_name{font-size:20px; font-weight:500; margin-bottom:10px;}
+#placesDetail_people{font-size:20px; font-weight:500; margin-bottom:10px;}
+
+/*ReservationInfoPlaceDetail*/
+.placeDetailContents {border:1px solid #ddd; padding:15px 30px;}
+.ReservationInfoPlaceDetail > ul {font-size:0; ; margin-bottom:10px; width:100%;}
+.ReservationInfoPlaceDetail > ul > li{display:inline-block; font-size:21px; font-weight:500; 
+ height:45px; padding:0 10px; margin-right:15px;
+ border:2px solid #000; border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px;}
+.ReservationInfoPlaceDetail > ul > li > div{font-size:0;}
+.ReservationInfoPlaceDetail > ul > li > div > span{display:inline-block; margin-right:5px;}
+.ReservationInfoPlaceDetail > ul > li img{width:30px; margin-top:10px;}
+
+#ReservationInfoPlaceDetail_checkDate:first-child{margin-left:40px;}
+#ReservationInfoPlaceDetail_checkDate{text-align:center; margin-top:-37px; width:150px; padding:0; font-size:20px; font-weight:500;}
+#ReservationInfoPlaceDetail_people:first-child{margin-left:40px;}
+#ReservationInfoPlaceDetail_people{text-align:center; margin-top:-37px; width:70px; padding:0; font-size:20px; font-weight:500;}
+
+
+
+/*roomReservation*/
+#roomReservation_people{width:120px; padding:0; font-size:18px; font-weight:500; margin-top:-5px;}
+#roomReservation_hours{width:50px; padding:0; font-size:18px; font-weight:500; margin-top:-5px;}
+#roomReservation_time{width:120px; padding:0; font-size:18px; font-weight:500; margin-top:-5px;}
+#roomReservation_price{text-align:right; padding:0; font-size:30px; font-weight:500; margin-bottom:10px; margin-top:-10px;}
+#roomReservation_checkIn{width:50px; padding:0; font-size:18px; font-weight:500; margin-top:-5px;}
+#roomReservation_checkOut{width:50px; padding:0; font-size:18px; font-weight:500; margin-top:-5px;}
+
+.roomReservation > ul  {font-size:0; margin:10px 0; width:100%;}
+.roomReservation > ul > li {display:inline-block; font-size:21px; width:550px; margin-right:30px; font-weight:500; box-sizing:border-box; -webkit-box-sizing:border-box; }
+.roomReservation > ul > li + li{margin-right:0;}
+.roomReservation > ul > li > h4{font-size:23px; text-align:left; margin:20px 0;}
+
+.useInfo {font-size:0; margin-bottom:30px; width:100%;}
+.useInfo > p {display:inline-block; font-size:18px; margin-right:10px;}
+.useInfo > p > span{display:inline-block; padding:5px; margin-right:10px; border-radius:5px; background-color:#eee;}
+.roomReservation > ul > li > a {display:inline-block; cursor:pointer; width:200px; height:50px; line-height:50px; color:#fff; font-size:23px; text-align:center; border-radius:10px; background-color:#de2e5f; margin-left:350px; border:2px solid #de2e5f;}
+.roomReservation > ul > li > a:hover{background-color:#fff; color:#de2e5f; border:2px solid #de2e5f;}
+
+.roomReview{ border-top:1px solid #ddd; padding-top:20px; margin-top:20px;}
+.roomReview > h3{font-size:25px; margin-bottom:20px;}
+.sortReview > ul {font-size:0; ; margin-bottom:10px;}
+.sortReview > ul > li{display:inline-block; font-size:20px; font-weight:400; 
+ height:45px; line-height:45px; margin-right:15px;}
+.sortReview > ul > li:hover{color:#13C3FF;}
+
+.reviewerInfo{font-size:0;}
+.reviewerInfo > p {display:inline-block;  font-size:26px; font-weight:500; margin-bottom:10px; margin-right: 20px;}
+.reviewerInfo > h4 {display:inline-block; font-size:23px; font-weight:500; margin-bottom:15px;}
+.reviewerInfo > p > span{color:#F6C800; display:inline-block; margin-right:10px; margin-bottom:15px;}
+.ReviewList > ul > li{margin-bottom:20px; padding-bottom:20px;
+border-bottom:1px solid #eee;}
+.ReviewList > ul > li > p > strong{display:inline-block; padding:5px 10px;  font-size:23px; margin-right:10px; border-radius:10px;background-color:#eee;}
+.ReviewList > ul > li > p {margin-bottom:40px; font-size:23px; font-weight:400;}
+.Reply {margin:10px 0; background-color:#eee; padding:15px 25px;
+border-radius:10px;}
+.Reply > h3{font-size:23px; font-weight:500; margin-bottom:15px;}
+.Reply > p {font-size:23px; font-weight:400; margin-bottom:10px;
+line-height:130%;}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+
+#wrap{width:100%;}
+.inner{width:1200px; margin:0 auto;}
+.sideMenuBar_inner{width:1200px; margin:0 auto; position:relative;}
+
+
+/*circleCheckbox 공통*/
+.circleCheck label{margin-right:50px;}
+.circleCheck input[type="checkbox"] + label:before{content:""; display:inline-block; width:20px; height:20px; border:2px solid #ddd; border-radius:50%; vertical-align:middle; }
+.circleCheck input[type="checkbox"]:checked + label:before{content:""; border-color:#7d7d7d; background-color:#7d7d7d; background-image:none;}
+.circleCheck input[type="checkbox"]{display: none;}
+/*manager_menu 공통*/
+.manager_menu{position:absolute; left:calc(50% - 600px);}
+.manager_menu > ul{margin-bottom:80px;}
+.manager_menu > ul li{font-size:16px; font-weight:400; margin-right:20px; width:120px; height:45px; line-height:50px; border:1px solid #ddd; 
+border-bottom:none; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box;}
+.manager_menu > ul li:last-child{margin-right:0;}
+.manager_menu > ul li a{display:block;}
+.manager_menu > ul li:first-child{height:100px; line-height:100px; font-size:23px; font-weight:500; background-color:#de2e5f; color:#fff; border-color:#de2e5f;}
+.manager_menu > ul li:last-child{border-bottom:2px solid #ddd;}
+.manager_menu > ul li:nth-child(n+2):hover{border:1px solid #de2e5f; background-color:#fbd7e1;}
+.manager_menu > ul li:nth-child(n+2):hover a{color:#de2e5f;}
+
+/*manager_table 공통*/
+.manager_table{font-size:17px; margin-top:15px; line-height:50px; margin-right:10px;}
+.manager_table thead{background-color:#eee; font-weight:400; font-size:14px;}
+.manager_table tbody{font-weight:400;}
+
+.information_business{display: block; text-align:left; margin-left:50px; margin-bottom: 50px;}
+.information_business ul{overflow:hidden;}
+.information_business ul li{float:left; font-size:15px; font-weight:400; margin-top:5px; line-height:50px; margin-right:10px;}
+.information_business ul li:first-child{width:150px; height:50px; font-size:19px; font-weight:500;}
+
+
+
+/*mypageManager.jsp ********************************************************************/
+.mypageManager{text-align:center;}
+.mypageManager h1{font-size:35px; margin-bottom:100px; background-color:#f89cb5; height:150px; line-height:150px;}
+.mypageManager h2{text-align:left; font-size:30px; margin-left:20px;}
+.mypageManager hr{border:3px solid #f89cb5; margin-bottom:50px;}
+
+.mypageManager_memberInfo{text-align:left; margin-left:150px;}
+.mypageManager_memberInfo > ul{overflow:hidden;}
+.mypageManager_memberInfo > ul li{float:left; font-size:17px; font-weight:400; margin-top:5px; line-height:50px; margin-right:10px;}
+.mypageManager_memberInfo > ul li:first-child{width:150px; height:50px; font-size:19px; font-weight:500;}
+.mypageManager_memberInfo > ul:nth-child(-n+3) li:nth-child(3){color:#de2e5f;}
+
+.mypageManager .Btn{cursor:pointer; width:350px; height:60px; margin-top:100px; border-radius:20px; font-size:25px; font-weight:500; color:#fff; background-color:#de2e5f; border:none; margin-right:50px; margin-bottom:50px;}
+.mypageManager .Btn:hover{background-color:#fff; color:#de2e5f; border:3px solid #de2e5f;}
+
+
+
+/*reviewManager.jsp ********************************************************************/
+.reviewManager{text-align:center;}
+.reviewManager h1{font-size:35px; margin-bottom:100px; background-color:#fff; height:100px; line-height:150px;}
+.reviewManager h2{text-align:left; font-size:30px; margin-left:20px;}
+.reviewManager hr{border:1px solid #f89cb5; margin-bottom:20px;}
+
+
+.reviewManager .manager_menu > ul li:nth-child(5){border:1px solid #de2e5f; background-color:#fbd7e1;}
+.reviewManager .manager_menu > ul li:nth-child(5) a{color:#de2e5f;}
+.reviewManager_content{margin-left:150px;}
+.reviewManager_reviewTable{margin-bottom:100px;}
+
+/*roomReview   ---  복붙*/
+.roomReview{text-align:left; margin-top:5px;}
+#selecetedRental{margin-bottom: 20px;}
+
+.sortReview > ul {font-size:0; margin-left:10px;}
+.sortReview > ul > li{display:inline-block; font-size:20px; font-weight:400; height:45px; line-height:45px; margin-right:15px; cursor: pointer;}
+.sortReview > ul > li:hover{color:#13C3FF;}
+.recentSort{color:#13C3FF; }
+
+
+
+.ReviewList{margin:0 20px;}
+.reviewerInfo{font-size:0;}
+.reviewerInfo > p {display:inline-block; font-size:20px; font-weight:500; margin-right:20px;}
+.reviewerInfo > h4 {display:inline-block; font-size:20px; font-weight:500; margin-bottom:15px;}
+.reviewerInfo > p > span{color:#F6C800; display:inline-block; margin-right:10px; margin-bottom:15px;}
+.ReviewList > ul > li{margin-bottom:50px; padding-bottom:50px; border-bottom:1px solid #eee;}
+.ReviewList > ul > li > p > strong{display:inline-block; padding:3px 20px; font-size:18px; margin-right:10px; border-radius:10px; background-color:#eee;}
+.ReviewList > ul > li > p span{font-size:20px;}
+.ReviewList > ul > li > p{margin-bottom:20px; font-size:17px; font-weight:400;}
+
+.Reply{margin:10px 0; background-color:#eee; padding:15px 25px; border-radius:10px;}
+.Reply h3{font-size:20px; font-weight:500; margin-bottom:5px;}
+.Reply p {font-size:17px; font-weight:400; margin-bottom:10px; line-height:130%;}
+
+.Reply textarea{resize:none; overflow:auto; font-size:17px; padding:0; height:80px; background-color:#eee; border:none; font-weight:500;}
+
+.answerClick{text-align:right; overflow: hidden;}
+.answerClick .answerBtn{ cursor:pointer; float:right; width:180px; height:40px; margin-top:10px; border-radius:10px; font-size:20px; font-weight:500; color:#fff; background-color:#de2e5f; border:none; margin-left:20px;}
+.answerClick .answerBtn:hover{background-color:#fff; color:#de2e5f; border:3px solid #de2e5f;}
+
+
+/*newHouseManager.jsp ********************************************************************/
+.newHouseManager{text-align:center;}
+.newHouseManager h1{font-size:35px; margin-bottom:100px; background-color:#f89cb5; height:150px; line-height:150px;}
+.newHouseManager h2{text-align:left; font-size:30px; margin-left:20px;}
+.newHouseManager hr{border:3px solid #f89cb5; margin-bottom:30px;}
+.newHouse_register hr{border:0.5px solid #ddd; margin-top:20px; margin-bottom:10px; margin-left:-20px;}
+
+.newHouseManager .manager_menu > ul li:nth-child(3){border:1px solid #de2e5f; background-color:#fbd7e1;}
+.newHouseManager .manager_menu > ul li:nth-child(3) a{color:#de2e5f;}
+.newHouseManager_content{margin-left:300px;}
+
+/*newHouse_register*/
+.newHouse_register{text-align:left; margin-left:20px;}
+.newHouse_register > ul{overflow:hidden;}
+.newHouse_register > ul li{float:left; font-size:17px; font-weight:400; margin-top:5px; line-height:50px; margin-right:10px;}
+.newHouse_register > ul li:first-child{width:150px; height:50px; font-size:19px; font-weight:500;}
+.newHouse_register > ul:nth-child(1) select{width:140px;}
+.newHouse_register > ul:nth-child(8){height:none;}
+
+.newHouse_register > hr{border:0.5px solid #ddd; margin-top:20px; margin-bottom:10px; margin-left:-20px;}
+
+.newHouse_register .addressBtn{cursor:pointer; width:150px; height:40px; border-radius:10px; font-size:17px; font-weight:500; margin-right:10px; background-color:#de2e5f; color:#fff; border:none;}
+.newHouse_register .addressBtn:hover{background-color:#fff; border:1px solid #de2e5f; color:#de2e5f;}
+.newHouse_register textarea{resize:none; overflow:auto; font-size:17px; width:500px; height:130px; margin-top:10px;}
+
+.newHouse_register .circleCheck label{margin-right:30px;}
+
+.newHouse_register .fileBtn{cursor:pointer; width:150px; height:40px; border-radius:10px; font-size:17px; font-weight:500; background-color:#fff; border:1px solid #ddd; margin-right:10px;}
+.newHouse_register .fileBtn:hover{background-color:#de2e5f; color:#fff; border-color:#de2e5f;}
+
+/*객실 등록*/
+.room_register{text-align:left; padding:20px 0 40px 40px; margin-top:50px; border:5px solid #ddd;}
+.room_register > ul{overflow:hidden;}
+.room_register > ul li{float:left; font-size:17px; font-weight:400; margin-top:5px; line-height:50px; margin-right:10px;}
+.room_register > ul li:first-child{width:150px; height:50px; font-size:19px; font-weight:500;}
+.room_register > ul:nth-child(8) li{height:none;}
+.room_register .fileBtn{cursor:pointer; width:150px; height:40px; border-radius:10px; font-size:17px; font-weight:500; background-color:#fff; border:1px solid #ddd; margin-right:10px;}
+.room_register .fileBtn:hover{background-color:#de2e5f; color:#fff; border-color:#de2e5f;}
+
+.room_register input[type="text"]:first-child{margin-left:0;}
+.room_register input[type="text"]{font-size:17px; border:none; border:1px solid #ddd; text-align:center;}
+
+.room_register > ul:nth-child(9){text-align:center;}
+.roomSaveBtn{cursor:pointer; width:300px; height:50px; margin-top:30px; border-radius:15px; font-size:20px; font-weight:500; color:#fff; background-color:#de2e5f; border:none;}
+.roomSaveBtn:hover{background-color:#fff; color:#de2e5f; border:3px solid #de2e5f;}
+
+
+.houseSaveBtn{cursor:pointer; width:500px; height:70px; margin-top:100px; border-radius:20px; font-size:25px; font-weight:700; color:#fff; background-color:#de2e5f; border:none;}
+.houseSaveBtn:hover{background-color:#fff; color:#de2e5f; border:4px solid #de2e5f;}
+
+
+/*exsistedHouseManager.jsp ********************************************************************/
+.existedHouseManager{text-align:center;}
+.existedHouseManager h1{font-size:35px; margin-bottom:100px; background-color:#f89cb5; height:150px; line-height:150px;}
+.existedHouseManager h2{text-align:left; font-size:30px; margin-left:20px;}
+.newHouseManager_content > hr{border:3px solid #f89cb5; margin-bottom:30px;}
+
+.existedHouseManager .manager_menu > ul li:nth-child(2){border:1px solid #de2e5f; background-color:#fbd7e1;}
+.existedHouseManager .manager_menu > ul li:nth-child(2) a{color:#de2e5f;}
+
+
+.manager_houseTable{margin-bottom:100px;}
+
+
+
+/*reservationManager.jsp ********************************************************************/
+.reservationManager{text-align:center;}
+.reservationManager h1{font-size:35px; margin-bottom:100px; height:100px; line-height:150px;}
+.reservationManager h2{text-align:left; font-size:30px; margin-left:20px;}
+.reservationManager_content > hr{border:1px solid #f89cb5; margin-bottom:30px;}
+.reservationManager_content{margin-left:150px;}
+
+.reservationManager .manager_menu > ul li:nth-child(4){border:1px solid #de2e5f; background-color:#fbd7e1;}
+.reservationManager .manager_menu > ul li:nth-child(4) a{color:#de2e5f;}
+
+.manager_reservationTable{margin-bottom:100px;}
+
+.manager_table{width: 100%; font-size:14px; text-align: center;}
+.reservation_stateTable > .manager_table > tbody {font-size:14px;}
+.reservation_stateTable > .manager_table > tbody > tr > td > input[type="text"]{border:none; text-align:center; padding:0;}
+.checkInOutBtn{width:80px; height:30px; font-size:15px; font-weight:500; border-radius:10px; border:1px solid #aeaeae; background-color:#fff; color:#aeaeae;}
+.checkInOutBtn:hover{border:1px solid #7d7d7d; background-color:#7d7d7d; color:#fff;}
+
+.information_business > .Btn{cursor:pointer; width:200px; height:45px; margin-top:50px; border-radius:10px; font-size:20px; font-weight:500; color:#fff; background-color:#de2e5f; border:none; margin-right:30px; margin-bottom:50px;}
+.information_business > .Btn:hover{background-color:#fff; color:#de2e5f; border:3px solid #de2e5f;}
+
+

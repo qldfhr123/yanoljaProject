@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.yanolja.admin.AdminMapper">
+	<resultMap type="com.care.yanolja.admin.AdminDTO" id="adminDto">
+		<id column="admin_id" property="adminId" />
+		<result column="admin_pw" property="adminPw" />
+		<result column="admin_location" property="adminLocation" />
+		<result column="region" property="region" />
+		<result column="business_Number" property="businessNumber" />
+		<result column="admin_mobile" property="adminMobile" />
+		<result column="admin_name" property="adminName" />
+	</resultMap>
+
+	<select id="adminLoginProc" resultMap="adminDto">
+		SELECT * FROM admin WHERE admin_id=#{adminId}
+	</select> 
+	
+	<insert id="adminRegisterProc" parameterType="com.care.yanolja.admin.AdminDTO">
+		INSERT INTO admin VALUES(#{adminLocation}, #{region}, #{adminPw}, #{businessNumber}, #{adminMobile},#{adminId},#{adminName})
+	</insert>
+	
+	<update id="adminUpdateProc" parameterType="com.care.yanolja.admin.AdminDTO">
+		UPDATE admin SET admin_location=#{adminLocation}, region=#{region}, admin_pw=#{adminPw}, business_number=#{businessNumber}, admin_mobile=#{adminMobile}, admin_name=#{adminName}  WHERE admin_id=#{adminId}
+	</update>
+	
+	<delete id="adminDeleteProc">
+		DELETE FROM admin WHERE admin_id=#{adminId}
+	</delete>
+	
+
+
+</mapper>

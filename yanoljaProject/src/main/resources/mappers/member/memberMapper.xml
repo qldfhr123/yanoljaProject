@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.yanolja.member.MemberMapper">
+	<resultMap type="com.care.yanolja.member.MemberDTO" id="memberDto">	
+		<id column="user_id" property="userId" />
+		<result column="user_pw" property="userPw" />
+		<result column="user_mobile" property="userMobile" />
+		<result column="user_dob" property="userDob" />
+		<result column="user_email" property="userEmail" />
+		<result column="user_name" property="userName" />
+		<result column="user_snsC" property="userSnsC" />
+	</resultMap>
+	
+	<select id="loginMemberProc" resultMap="memberDto"> 
+		SELECT * FROM member WHERE user_id=#{userId}
+	</select>
+
+	<insert id="registerMemberProc" parameterType="com.care.yanolja.member.MemberDTO">
+		INSERT INTO member (user_id, user_pw, user_mobile, user_name, user_dob, user_email, user_snsC) 
+        VALUES (#{userId}, #{userPw}, #{userMobile}, #{userName}, #{userDob}, #{userEmail}, '회원가입')
+	</insert>
+
+	<insert id="kakaoInsert" parameterType="com.care.yanolja.member.MemberDTO">
+		INSERT INTO member (user_id, user_pw, user_mobile, user_name, user_dob, user_email, user_snsC) 
+    	VALUES (#{userId}, #{userPw}, #{userMobile}, #{userName}, #{userDob}, #{userEmail}, '카카오계정')
+	</insert>
+
+	<update id="updateMemberProc" parameterType="com.care.yanolja.member.MemberDTO">
+		UPDATE member SET user_name=#{userName}, user_pw=#{userPw}, user_dob=#{userDob}, user_mobile=#{userMobile} 
+		WHERE user_id=#{userId}
+	</update>
+
+	<delete id="deleteMember">
+		DELETE FROM member WHERE user_id=#{userId}
+	</delete>
+
+</mapper>
+
+

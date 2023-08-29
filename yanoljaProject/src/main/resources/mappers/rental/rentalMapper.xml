@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.yanolja.rental.RentalMapper">
+	<resultMap type="com.care.yanolja.rental.RentalAdminDTO"	id="rentalAdminDTO">
+		<result column="host_name" property="hostName" />
+		<result column="host_img" property="hostImg" />
+		<result column="room_name" property="roomName" />
+		<result column="room_img" property="roomImg" />
+		<result column="region" property="region" />
+		<result column="admin_name" property="adminName" />
+		<result column="address" property="adminLocation" />
+		<result column="Business_Number" property="businessNumber" />
+		<result column="min_people" property="minPeople" />
+		<result column="max_people" property="maxPeople" />
+		<result column="room_pay" property="roomPay" />
+		<result column="room_num" property="roomNum" />
+		<result column="info" property="info" />
+		<result column="service" property="service" />
+		<result column="Rental_type" property="lodType" />
+		<result column="deadline_C" property="deadlineC" />
+		<result column="admin_mobile" property="adminMobile" />
+	</resultMap>
+
+	<select id="rentalSelectProc" resultMap="rentalAdminDTO">
+		SELECT DISTINCT host_name, admin_name, admin_id, address, Business_Number, Rental_type FROM rental WHERE admin_id=#{adminId};
+	</select>
+	
+	<resultMap type="com.care.yanolja.rental.RentalDTO" id="RentalDto">
+		<result column="host_name" property="host_name"/>
+		<result column="room_name" property="room_name"/>
+		<result column="room_img" property="room_img"/>
+		<result column="region" property="region"/>
+		<result column="min_people" property="min_people"/>
+		<result column="max_people" property="max_people"/>
+		<result column="room_pay" property="room_pay"/>
+		<result column="room_num" property="room_num"/>	
+		<result column="address" property="address"/>
+		<result column="info" property="info"/>
+		<result column="service" property="service"/>
+		<result column="Rental_type" property="Rental_type"/>
+		<result column="deadline_C" property="deadline_C"/>	
+		<result column="admin_mobile" property="admin_mobile"/>
+		<result column="sleep_type" property="sleep_type"/>
+		<result column="startTime" property="startTime"/>
+		<result column="admin_Id" property="admin_Id"/>
+		<result column="endTime" property="endTime"/>
+		<result column="useTime" property="useTime"/>
+		<result column="Representative_photo" property="Representative_photo"/>	
+	</resultMap>
+
+	<insert id="host_daeInfo">
+		INSERT INTO Rental (host_name,room_name,room_img,region,min_people,max_people,room_pay,address,info,service,Rental_type,deadline_C,sleep_type,startTime,endTime,useTime,Representative_photo) 
+		VALUE(#{hostName_dae},#{roomName_dae},#{imgfileNames},#{region},#{minPeopole_dae},#{maxPeopole_dae},#{romPay_dae},#{addressAll},#{host_info},#{roomServ},#{photo_name},#{dead},#{roomType_dae},#{ableTimeStart},#{ableTime_last},#{userTime},#{selectedCategory})
+	</insert>
+	
+	<insert id="host_suInfo">
+		INSERT INTO Rental (host_name,room_name,room_img,region,min_people,max_people,room_pay,address,info,service,Rental_type,deadline_C,sleep_type,startTime,endTime,Representative_photo) 
+		VALUE(#{hostName_su},#{roomName_su},#{imgfileNames},#{region},#{minPeopole_su},#{maxPeopole_su},#{romPay_su},#{addressAll},#{host_info},#{roomServ},#{photo_name},#{dead},#{roomType_su},#{ableTimeStart_su},#{ableTime_last_su},#{selectedCategory})
+	</insert>
+	
+	<select id="RoomUpdate" resultMap="RentalDto">
+		SELECT * FROM Rental where adminId = #{adminId};
+	
+	</select>
+	
+	
+
+</mapper>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+CREATE TABLE reservation(
+	rese_num VARCHAR(12),
+	user_name VARCHAR(20),
+	user_id VARCHAR(20) NOT NULL,
+	user_mobile VARCHAR(60) NOT NULL,
+		
+	host_name VARCHAR(100),
+	room_name VARCHAR(40),
+	admin_name VARCHAR(20),
+	region VARCHAR(40),
+	room_info VARCHAR(400),
+	room_type VARCHAR(20),
+	room_price VARCHAR(20),
+	id_select_lod VARCHAR(20),
+	
+	representative_img VARCHAR(150),
+	children VARCHAR(20),
+	people VARCHAR(20),
+	check_in VARCHAR(20),
+	check_out VARCHAR(20),
+	click_check_in VARCHAR(20),
+	click_check_out VARCHAR(20),
+	people_plus VARCHAR(20),	
+	PRIMARY KEY(rese_num,room_name,check_in)
+) CHARSET=UTF8;
+-->
+<mapper namespace="com.care.yanolja.reservation.MemReserveMapper">
+	<resultMap type="com.care.yanolja.reservation.MemReserveDTO" id="reservation">	
+		<id column="rese_num" property="reseNum" />
+		
+		<result column="user_name" property="userName" />
+		<result column="user_id" property="userId" />
+		<result column="user_mobile" property="userMobile" />
+		
+		<result column="host_name" property="hostName" />
+		<result column="room_name" property="roomName" />
+		<result column="admin_name" property="adminName" />
+		<result column="region" property="region" />
+		<result column="room_info" property="roomInfo" />
+		<result column="id_select_lod" property="idSelectLod" />  <!-- 숙소 ID -->
+		<result column="room_type" property="roomType" />
+		<result column="room_price" property="roomPrice" />
+		
+		<result column="representative_img" property="representativeImg" />
+		<result column="children" property="children" />
+		<result column="people" property="people" />
+		<result column="check_in" property="checkIn" />
+		<result column="check_out" property="checkOut" />
+		<result column="click_check_in" property="clickCheckIn" />
+		<result column="click_check_out" property="clickCheckOut" />
+		<result column="review_state" property="reviewState" />	
+	</resultMap>
+
+
+	<select id="reserveSelectId" resultMap="reservation"> 
+		SELECT * FROM reservation WHERE user_id=#{userId}
+	</select>
+	
+	<insert id="memReserveProc" parameterType="com.care.yanolja.reservation.MemReserveDTO">
+		INSERT INTO reservation (rese_num, user_name, user_id, user_mobile, 
+			host_name, room_name, admin_name, region, room_info, id_select_lod, room_type, room_price,
+			representative_img, children, people, check_in, check_out) 
+        VALUES (#{reseNum}, #{userName}, #{userId}, #{userMobile}, 
+			#{hostName}, #{roomName}, #{adminName}, #{region}, #{roomInfo}, #{idSelectLod}, #{roomType}, #{roomPrice},
+			#{representativeImg}, #{children}, #{people}, #{checkIn}, #{checkOut})
+	</insert>
+
+	<delete id="reseDeleteProc" parameterType="com.care.yanolja.reservation.MemReserveDTO">
+		DELETE FROM reservation WHERE rese_num=#{reseNum} AND room_name=#{roomName} AND check_in=#{checkIn}
+	</delete>
+	
+	<update id="reseUpdateReviewProc" parameterType="com.care.yanolja.reservation.MemReserveDTO">
+		UPDATE reservation SET review_state=#{reviewState}
+		WHERE user_id=#{userId} AND rese_num=#{reseNum} AND host_name=#{hostName} AND room_name=#{roomName}
+	</update>
+	
+	<!-- 예약내역 정렬 -->
+	<select id="recent3MonthSort" resultMap="reservation"> 
+		SELECT * FROM reservation WHERE user_id=#{userId} 
+		AND rese_num >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 3 MONTH), '%Y%m%d%H%i')
+	</select>
+	<select id="recent6MonthSort" resultMap="reservation"> 
+		SELECT * FROM reservation WHERE user_id=#{userId}
+		AND rese_num >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 6 MONTH), '%Y%m%d%H%i')
+	</select>
+	<select id="recent1YearSort" resultMap="reservation"> 
+		SELECT * FROM reservation WHERE user_id=#{userId}
+		AND rese_num >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 12 MONTH), '%Y%m%d%H%i')
+	</select>
+
+</mapper>

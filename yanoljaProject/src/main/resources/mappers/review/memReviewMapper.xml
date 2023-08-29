@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+CREATE TABLE review(
+	user_id VARCHAR(20),
+	rese_num VARCHAR(20),
+	room_name VARCHAR(40),
+	host_name VARCHAR(100),
+	content VARCHAR(100),
+	write_date VARCHAR(60),
+	review_point INT,
+	admin_id VARCHAR(50),
+	admin_content VARCHAR(50),
+	admin_write_date VARCHAR(50)
+)CHARSET=UTF8;
+ -->
+<mapper namespace="com.care.yanolja.review.MemReviewMapper">
+	<resultMap type="com.care.yanolja.review.MemReviewDTO" id="review">	
+		<result column="user_id" property="userId" />
+		<result column="rese_num" property="reseNum" />
+		<result column="host_name" property="hostName" />
+		<result column="room_name" property="roomName" />
+		<result column="content" property="content" />
+		<result column="write_date" property="writeDate" />
+		<result column="review_point" property="reviewPoint" />
+	</resultMap>
+	
+	<select id="fintReviewProc" resultMap="review"> 
+		SELECT * FROM review WHERE rese_num=#{reseNum} AND user_id=#{userId} AND content=#{content}
+	</select>
+
+	<select id="reviewSelectId" resultMap="review"> 
+		SELECT * FROM review WHERE user_id=#{userId}
+	</select>
+	
+	<insert id="memReviewProc" parameterType="com.care.yanolja.review.MemReviewDTO">
+		INSERT INTO review (user_id, rese_num, host_name, room_name, content, write_date, review_point) 
+        VALUES (#{userId}, #{reseNum}, #{hostName}, #{roomName}, #{content}, #{writeDate}, #{reviewPoint})
+	</insert>
+	
+	<delete id="reviewDeleteProc" parameterType="com.care.yanolja.review.MemReviewDTO">
+		DELETE FROM review WHERE rese_num=#{reseNum} AND room_name=#{roomName}
+	</delete>
+	
+	<update id="reviewUpdateProc" parameterType="com.care.yanolja.review.MemReviewDTO">
+		UPDATE review SET content=#{content}, review_point=#{reviewPoint}
+		WHERE user_id=#{userId} AND rese_num=#{reseNum} AND room_name=#{roomName}
+	</update>
+	
+	
+	
+	
+	
+	
+</mapper>

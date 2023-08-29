@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.care.yanolja.reservation.ReservationMapper">
+  	<resultMap type="com.care.yanolja.reservation.ReservationDTO" id="reservationDto">
+  		<id column="rese_num" property="reseNum"/>  
+  		<result column="user_name" property="userName"/>
+  		<result column="user_id" property="userId"/>
+  		<result column="host_name" property="hostName"/>
+  		<result column="user_mobile" property="userMobile"/>
+  		<result column="room_name" property="roomName"/>
+  		<result column="admin_location" property="adminLocation"/>
+  		<result column="amdin_name" property="adminName"/>
+  		<result column="pay_check" property="payCheck"/>
+  		<result column="children" property="children"/>
+  		<result column="people" property="people"/>
+  		<result column="click_check_in" property="clickCheckIn"/>
+  		<result column="check_in" property="checkIn"/>
+  		<result column="click_check_out" property="clickCheckOut"/>
+  		<result column="check_out" property="checkOut"/>
+  		<result column="people_plus" property="peoplePlus"/>
+  		<result column="room_info" property="roomInfo"/>
+  		<result column="id_select_lod" property="idSelectLod"/>  			
+  	</resultMap>
+  	
+  	<select id="reservationCheckProc"  resultMap="reservationDto">
+  		SELECT * FROM reservation WHERE host_name=#{hostName} AND admin_name=#{adminName}
+  	</select>
+  	
+  	<update id="clickCheckInProc" parameterType="com.care.yanolja.reservation.ReservationDTO">
+  		UPDATE reservation SET click_check_in=#{clickCheckIn} WHERE rese_num=#{reseNum} 
+  	</update>
+  	
+  	<update id="clickCheckOutProc" parameterType="com.care.yanolja.reservation.ReservationDTO">
+  		UPDATE reservation SET click_check_out=#{clickCheckOut} WHERE rese_num=#{reseNum} 
+  	</update>
+  </mapper>

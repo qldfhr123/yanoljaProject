@@ -1,0 +1,253 @@
+@charset "UTF-8";
+
+
+#wrap{width:100%;}
+.inner{width:1200px; margin:0 auto;}
+.sideMenuBar_inner{width:1200px; margin:0 auto; position:relative;}
+.inner800{width:800px; margin:0 auto;}
+
+/*registerMember.jsp ********************************************************************/
+.register{text-align:center;}
+.register h1{font-size:35px; margin-bottom:100px; background-color:#f89cb5; height:150px; line-height:150px;}
+.register h2{text-align:left; font-size:30px; margin-left:20px;}
+.register hr{border:3px solid #f89cb5; margin-bottom:50px;}
+
+.register_agree{text-align:left; margin-left:150px;}
+.register_agree hr{border:1px solid #ddd; margin-left:-150px; margin-top:50px; margin-bottom:50px;}
+.register_agree h2{font-size:25px; margin-left:-2px; margin-bottom:20px;}
+.register_agree h3{border:2px solid #ddd; font-size:23px; font-weight:400; margin-right:150px; padding:5px 10px; border-radius:10px; margin-bottom:20px;}
+.register_agree h3 span{font-size:17px; color:#7d7d7d;}
+
+.agreeCheckbox{margin-left:13px;}
+.agreeCheckbox label{font-size:18px; font-weight:300; color:#000;}
+.register_agree input[type="checkbox"] + label:before{width:30px; height:30px; vertical-align:middle;}
+.register_agree ul li{margin-top:5px;}
+
+/*agreeCheckbox*/
+.register_agree input[type="checkbox"]{display:inline-block; width:20px; height:20px; accent-color:#de2e5f;}
+.agreeCheckbox span{margin-left:5px; font-weight:500;}
+.agreeCheckbox{margin-left:13px;}
+.agreeCheckbox label{font-size:18px; font-weight:300; color:#000;}
+
+
+/*register_type*/
+.register_type button:first-child{margin-right:50px;}
+
+.registerTypeBtn1{cursor:pointer; width:300px; height:50px; border-radius:20px; font-size:25px; font-weight:500; color:#cdcbcb; background-color:#fff; border:2px solid #cdcbcb; margin-bottom:50px;}
+.registerTypeBtn1.clicked {background-color:#fff; color:#de2e5f; border:3px solid #de2e5f;}
+.registerTypeBtn2{cursor:pointer; width:300px; height:50px; border-radius:20px; font-size:25px; font-weight:500; color:#cdcbcb; background-color:#fff; border:2px solid #cdcbcb; margin-bottom:50px;}
+.registerTypeBtn2.clicked {background-color:#fff; color:#de2e5f; border:3px solid #de2e5f;}
+
+/*register_content*/
+.register_content{text-align:left; margin-left:150px;}
+.register_content ul{overflow:hidden;}
+.register_content ul li{float:left; font-size:17px; font-weight:400; margin-top:5px; line-height:50px; margin-right:10px;}
+.register_content ul li:first-child{width:150px; height:50px; font-size:19px; font-weight:500;}
+#labelEmail{margin-left:-10px;}
+
+.registerBtn{cursor:pointer; width:150px; height:40px; border-radius:10px; font-size:17px; font-weight:500; margin-right:10px; background-color:#de2e5f; color:#fff; border:none;}
+.registerBtn:hover{background-color:#fff; border:1px solid #de2e5f; color:#de2e5f;}
+
+.register .Btn{cursor:pointer; width:450px; height:50px; margin-top:100px; border-radius:10px; font-size:23px; font-weight:500; color:#fff; background-color:#de2e5f; border:none; margin-right:50px; margin-bottom:50px;}
+.register .Btn:hover{background-color:#fff; color:#de2e5f; border:3px solid #de2e5f;}
+
+/*index_header*/
+.ReservationInfo > ul {font-size:0; ; margin-bottom:10px; border-bottom:1px solid #444; padding-left:80px; padding-bottom:20px;}
+.ReservationInfo > ul > li{display:inline-block; font-size:21px; font-weight:500; 
+ height:45px; line-height:45px; padding:0 10px; margin-right:15px;
+ border: 2px solid #000;
+ border-radius: 10px; -webkit-border-radius:10px; -moz-border-radius:10px; cursor: pointer;}
+.ReservationInfo > ul > li > div{font-size:0;}
+.ReservationInfo > ul > li > div > span{display:inline-block; margin-right:5px; }
+.ReservationInfo > ul > li img{width:25px; margin-top:-5px;}
+.ReservationInfo > ul > li > div > span,
+.ReservationInfo > ul > li > div > p{display:inline-block; font-size:20px; }
+.ReservationInfo > ul > :last-child {display: none;height:49px;/* line-height: 49px; */font-size:20px;}
+.ReservationInfo > ul > li > div input[type="text"]{width: 100px; margin-right: 15px; margin-top:-18px;}
+.ReservationInfo > ul > li > div input[type="button"]{height: 40px; margin-top:-18px;}
+.ReservationInfo > ul > li > div > form >label {font-size:20px;}
+
+/*adminLogin*/
+.headerLogin{height:85px; line-height:85px; text-align:center; margin:100px auto 100px;}
+.headerLogin a{text-align:center;}
+.headerLogin a img{width:250px; vertical-align:middle; margin-bottom:20px;}
+.login{margin-bottom:15px;}
+.login p{font-size:0; width:100%; height:40px; border-bottom:1px solid #666; padding:-2px 0;
+margin-bottom:30px;}
+.login p label{display:inline-block; width:80px; font-size:20px; margin-right:10px; text-align:left;}
+.login p input{display:inline-block; width:700px; border:0; font-size:20px;
+position:relative; top:-10px;}
+
+.loginContent {text-align:center;}
+.loginContent > p {margin-bottom:15px; text-align:left;}
+
+.loginContent > button{width:500px; border-radius:5px; margin-bottom:20px; margin-top:50px;
+-webkit-border-radius:5px; -moz-border-radius:5px; cursor:pointer; 
+border:0; height:50px; background:#de2e5f; font-size:20px; color:#fff;}
+.loginContent > p > input[type="checkbox"]{width:20px; height:20px; margin-top:2px; display:inline-block; accent-color:#de2e5f;}
+.kakaoLogin{width:500px; height:50px; margin:0 auto;}
+.kakaoLogin > a{display:inline-block; width:500px; border-radius:5px; background-color:#f9e000;
+-webkit-border-radius:5px; -moz-border-radius:5px; cursor:pointer; height:50px;
+}
+.kakaoLogin img{width:45px; margin-top:3px;}
+.kakaoLogin span{display:inline-block; vertical-align:top; margin-top:10px; margin-left:10px; font-size:20px; color:#000; font-weight:400;}
+
+.find{margin-bottom:100px; margin-top:20px;}
+
+
+/*memberUpdate.jsp ********************************************************************/
+.memberUpdate{text-align:center;}
+.memberUpdate h2{text-align:left; font-size:30px; margin-left:20px;}
+.memberUpdate hr{border:3px solid #f89cb5; margin-bottom:50px;}
+
+.memberUpdate .memberInfo{text-align:left; margin-left:200px;}
+
+.memberUpdate .Btn{cursor:pointer; width:450px; height:50px; margin-top:100px; border-radius:10px; font-size:23px; font-weight:500; color:#fff; background-color:#de2e5f; border:none; margin-right:50px; margin-bottom:50px;}
+.memberUpdate .Btn:hover{background-color:#fff; color:#de2e5f; border:3px solid #de2e5f;}
+
+
+/*mypageMember.jsp ********************************************************************/
+/* 마이페이지 - 회원정보 */
+.mypageMember{text-align:center;}
+.mypageMember h1{font-size:35px; margin-bottom:100px; background-color:#f89cb5; height:150px; line-height:150px;}
+.mypageMember h2{text-align:left; font-size:30px; margin-left:20px;}
+.mypageMember hr{border:3px solid #f89cb5; margin-bottom:50px;}
+
+.userInfoBox{margin-bottom:100px;}
+.memberInfo{text-align:left; margin-left:250px;}
+.memberInfo > ul{overflow:hidden;}
+.memberInfo > ul li{float:left; font-size:17px; font-weight:400; margin-top:5px; line-height:50px; margin-right:10px;}
+.memberInfo > ul li:first-child{width:150px; height:50px; font-size:19px; font-weight:500;}
+.memberInfo > ul:nth-child(-n+3) li:nth-child(3){color:#de2e5f;}
+
+.userInfoBox .Btn{cursor:pointer; width:200px; height:45px; margin-top:50px; border-radius:10px; font-size:20px; font-weight:500; color:#fff; background-color:#de2e5f; border:none; margin-right:30px; margin-bottom:50px;}
+.userInfoBox .Btn:hover{background-color:#fff; color:#de2e5f; border:3px solid #de2e5f;}
+
+/* 마이페이지 - 예약내역 */
+.sortReservation > ul {font-size:0; padding-left:30px;}
+.sortReservation > ul > li{display:inline-block; font-size:18px; font-weight:400; height:45px; line-height:45px; margin-right:15px;}
+.sortReservation > ul > li:hover{color:#13C3FF;}
+
+.recent3MonthSort,
+.recent6MonthSort,
+.recent1YearSort{cursor:pointer;}
+
+.myReservation{text-align:left; margin-bottom:100px;}
+.myReservation h2{text-align:left; font-size:30px; margin-left:20px;}
+.myReservation hr{border:3px solid #f89cb5;}
+
+
+.reservationList {padding:0 30px;}
+.reservationList > h3{text-align:center; font-size:25px; font-weight:500; margin-bottom:200px; margin-top:50px;}
+.reservationList input[type="text"]{border:none;}
+
+.reservationList .reseList_reserveDay{font-size:25px; font-weight:600; padding-bottom:10px; border-bottom:1px solid #ddd; margin-bottom:10px; margin-top:50px;}
+.reservationList .reservationList_rese_number{font-size:20px; margin-bottom:10px;}
+.reservationList .reservationList_houseName{font-size:22px; font-weight:500; margin-bottom:5px; margin-top:10px;}
+.reservationList .reservationList_roomName{font-size:20px; font-weight:500; margin-bottom:5px;}
+.reservationList .reservationList_checkIn{font-size:17px; font-weight:400; color:#666; margin-bottom:10px; margin-bottom:-5px;}
+.reservationList .reservationList_checkOut{font-size:17px; font-weight:400; color:#666; margin-bottom:10px; margin-bottom:-5px;}
+
+
+.reservationList > ul > li {position:relative; padding-bottom:20px; border-bottom:1px solid #eee; margin-bottom:20px;}
+.reservationList > ul > li > div{display:table; vertical-align:top;}
+
+.reservationList > ul > li > div > span{display:table-cell; display:inline-block; width:200px; height:200px; overflow:hidden; margin-left:20px;}
+.reservationList > ul > li > div > span > img{width:100%; height:100%; margin:auto; border-radius:10px;}
+
+.reservationList > ul > li > div > div{display:table-cell; font-size:20px; vertical-align:top; width:980px; margin-left:50px;}
+.reseDelete_openPopupButton{position:absolute; bottom:20px; right:0; width:150px; height:40px;border-radius:10px; font-size:20px; font-weight:400; color:#de2e5f; background-color:#fff; border:none; border:1px solid #de2e5f; cursor:pointer;}
+.reseDelete_openPopupButton:hover{background-color:#de2e5f; color:#fff; border:1px solid #de2e5f;}
+.reviewWritePage{position:absolute; bottom:20px; right:0; width:150px; height:40px; border-radius:10px; font-size:20px; font-weight:400; color:#fff; background-color:#de2e5f; border:none; border:1px solid #de2e5f; cursor:pointer;}
+.reviewWritePage:hover{background-color:#fff; color:#de2e5f; border:1px solid #de2e5f;}
+.reviewWrite_complete{position:absolute; bottom:20px; right:0; width:150px; height:40px; border-radius:10px; font-size:20px; font-weight:400; color:#000; background-color:#eee; border:none; border:1px solid #000; cursor:pointer;}
+
+
+/* 팝업창 */
+.reseDelete_popup{display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0, 0, 0, 0.5); z-index:1000;}
+
+.reseDelete_popup_content{background-color:white; width:500px; padding:30px; text-align:center;
+border-radius:5px; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);}
+.reseDelete_popup_content > h3{margin-bottom:50px;}
+.reseDelete_popup_content > button{background:none; border:none; font-size:16px; margin-right:50px; cursor:pointer;}
+.reseDelete_popup_content > button:last-child{margin-right:0;}
+
+
+/* 마이페이지 - 리뷰 */
+.myReview > h3{text-align:center; margin-top:50px; font-size:30px; font-weight:600;}
+.myReview_part{display:flex; align-items:center; vertical-align:middle;}
+.myReview_part_title{text-align:left; font-size:30px; margin-left:20px; width:150px;}
+.myReview_part .review_count{font-size:30px; font-weight:600; color:#999; margin-top:5px; margin-left:-15px;}
+
+.myReview hr{border:3px solid #f89cb5; margin-bottom:50px;}
+
+.myReview input[type="text"]{border:none;}
+.myReviewList{margin-bottom:50px;}
+
+.myReviewList .myReviewList_hostName{font-size:22px; font-weight:400;}
+
+
+/* 별점 출력 */
+.starsPresent{font-size:30px; color:#F6C800; display:inline-block; margin-right:10px; margin-bottom:10px;}
+
+.reviewCotents_part1{display:flex; align-items:center; vertical-align:middle;}
+.reviewCotents_part1 .myReviewList_writeDate{font-size:24px; font-weight:500;}
+.reviewCotents_part2 .myReviewList_roomName{font-size:25px; font-weight:600; margin-left:-20px;}
+.reviewCotents_part2 .myReviewList_checkIn{font-size:20px; font-weight:500; margin-left:-20px;}
+
+.reviewCotents_part span{font-size:18px; font-weight:400; width:100px; height:50px; margin-top:-5px;}
+.reviewCotents textarea{resize:none; margin-top:10px; background-color:#eee; border:none;
+border-radius:10px; margin-left:-10px; font-size:22px; font-weight:600;}
+
+
+.reviewCotents{text-align:left; margin-left:20px; position:relative;}
+.myReviewList_Btn{display:flex; align-items:center; vertical-align:middle; position:absolute; right:55px; top:-30px;}
+.myReviewList_Btn button{cursor:pointer; margin-left:40px; background:none; border:none; width:35px; height:35px;}
+
+
+.reviewCotents > span + span{right:0; top:2px;}
+.reviewCotents > span > img{width:100%; cursor:pointer;}
+.reviewCotents > p {font-size:22px; margin-bottom:15px; font-weight:500;}
+.reviewCotents > p:last-child{font-size:28px; margin-bottom:40px; padding-bottom:20px;
+border-bottom:1px solid #eee;}
+
+/* 팝업창 */
+.reviewDelete_popup{display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0, 0, 0, 0.5); z-index:1000;}
+
+.reviewDelete_popup_content{background-color:white; width:500px; padding:30px; text-align:center;
+border-radius:5px; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);}
+.reviewDelete_popup_content > h3{margin-bottom:50px;}
+.reviewDelete_popup_content > button{background:none; border:none; font-size:16px; margin-right:50px; cursor:pointer;}
+.revieweDelete_popup_content > button:last-child{margin-right:0;}
+
+
+
+
+/*memberDelete.jsp ********************************************************************/
+.memberDelete{text-align:center;}
+.memberDelete h2{text-align:left; font-size:30px; margin-left:20px;}
+.memberDelete hr{border:3px solid #f89cb5; margin-bottom:50px;}
+
+.deleteMember_rule th {text-align:left; padding-bottom:10px; padding-top:10px;}
+.deleteMember_rule td {text-align:left; padding-bottom:30px; }
+.deleteMember_rule td q {color:#de2e5f;}
+
+.deleteMember_rule textarea {height: 136px; width: 800px; resize:none; margin-bottom:30px; margin-top:15px;}
+
+.deleteMember_button{text-align:center;}
+.deleteMemberBtn{width:500px; height:50px; text-align:center; background-color:#de2e5f; border-radius:10px; font-size:23px; color:white; font-weight:500; margin-top:20px;margin-bottom:20px; border:none; cursor: pointer;}
+.deleteMemberBtn:hover{background-color:#fff; color:#de2e5f; border:3px solid #de2e5f;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

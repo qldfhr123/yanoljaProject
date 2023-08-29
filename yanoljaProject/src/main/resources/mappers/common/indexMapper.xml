@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.care.yanolja.common.IndexMapper">
+
+<resultMap type="com.care.yanolja.common.indexDTO" id="indexDTO">
+		<result column="host_name" property="host_name"/>
+		<result column="room_name" property="room_name"/>
+		<result column="room_img" property="room_img"/>
+		<result column="region" property="region"/>
+		<result column="min_people" property="min_people"/>
+		<result column="max_people" property="max_people"/>
+		<result column="room_pay" property="room_pay"/>
+		<result column="room_num" property="room_num"/>	
+		<result column="address" property="address"/>
+		<result column="info" property="info"/>
+		<result column="service" property="service"/>
+		<result column="Rental_type" property="Rental_type"/>
+		<result column="deadline_C" property="deadline_C"/>	
+		<result column="admin_mobile" property="admin_mobile"/>
+		<result column="admin_id" property="admin_id"/>
+		<result column="admin_name" property="admin_name"/>
+		<result column="sleep_type" property="sleep_type"/>
+		<result column="startTime" property="startTime"/>
+		<result column="endTime" property="endTime"/>
+		<result column="useTime" property="useTime"/>
+		<result column="Representative_photo" property="Representative_photo"/>	
+	</resultMap>
+	
+	<resultMap type="com.care.yanolja.common.host_nameDTO" id="host_nameDTO">
+		
+		<result column="room_payDae" property="room_payDae"/>
+		
+		<result column="sleep_typeDae" property="sleep_typeDae"/>
+		
+		<result column="room_paySu" property="room_paySu"/>
+		
+		<result column="sleep_typeSu" property="sleep_typeSu"/>
+
+		<result column="useTimeDae" property="useTimeDae"/>
+
+	</resultMap>
+	
+
+
+	<select id="showMainIndex" resultMap="indexDTO">
+			SELECT host_name, Rental_type, room_name, room_img, region, min_people, max_people, room_pay, 
+			       room_num, address, info, service, deadline_C, sleep_type, startTime, endTime, useTime, Representative_photo,admin_id, admin_name
+			FROM (
+			    SELECT host_name, Rental_type, room_name, room_img, region, min_people, max_people, room_pay,
+			           room_num, address, info, service, deadline_C, sleep_type, startTime, endTime, useTime, Representative_photo,admin_id, admin_name,
+			           ROW_NUMBER() OVER(PARTITION BY host_name ) AS rn
+			    FROM Rental
+			    WHERE Rental_type =  #{C_rental_type}
+			) AS ranked
+			WHERE rn = 1;
+	</select>
+	
+	<!-- 이 부분을 추가하여 가격 순으로 정렬 -->
+	<select id="showMainIndexOrderByPrice" resultMap="indexDTO">
+	    SELECT host_name, Rental_type, room_name, room_img, region, min_people,
+	           max_people, room_pay, room_num,address,
+	           info, service ,deadline_C,sleep_type,
+	           startTime,endTime ,useTime ,Representative_photo,admin_id, admin_name
+	    FROM (
+	        SELECT host_name,Rental_type ,room_name ,room_img ,region,min_people,
+	               max_people ,room_pay ,room_num,address ,
+	               info ,service  ,deadline_C,sleep_type ,
+	               startTime,endTime  ,useTime  ,
+	               Representative_photo,admin_id, admin_name,
+	               ROW_NUMBER() OVER(PARTITION BY host_name ORDER BY room_pay) AS rn
+	        FROM Rental
+	        WHERE Rental_type = #{C_rental_type}
+	    ) AS ranked
+	    WHERE rn = 1;
+	</select>
+
+		<!-- 가격 역순으로 정렬 -->
+		<select id="showMainIndexOrderByPriceDesc" resultMap="indexDTO">
+		    SELECT host_name,Rental_type ,room_name ,
+		           room_img  region,min_people,max_people 
+		           room_pay  room_num,address 
+		           info service deadline_C sleep_type 
+		           startTime endTime useTime Representative_photo  admin_id, admin_name
+		     FROM (
+		         SELECT host_name,Rental_type 
+		                room_name   room_img  
+		                region min_people max_people  
+		                room_pay   address   
+		                info service deadline_C sleep_type  
+		                startTime endTime useTime Representative_photo   admin_id, admin_name,
+		                ROW_NUMBER() OVER(PARTITION BY host_name ORDER BY room_pay DESC) AS rn 
+		         FROM Rental WHERE Rental_type = #{C_rental_type} ) AS ranked WHERE rn = 1; 
+         </select>
+
+		
+		<!-- 별점 높은 순으로 정렬 -->
+		<select id="showMainIndexOrderByRating" resultMap="indexDTO">
+		     SELECT * FROM (
+		         SELECT *, ROW_NUMBER() OVER(PARTITION BY host_name ORDER BY rating DESC) as rn 
+		         FROM Rental WHERE rental_Type = #{c_rental_Type} ) as ranked WHERE rn=1; 
+		  </select>
+
+		
+		<!-- 후기 많은 순으로 정렬 -->
+		<select id="showMainIndexOrderByReviews" resultMap="indexDTO">
+		     SELECT * FROM (
+		         SELECT *, ROW_NUMBER() OVER(PARTITION BY host_name ORDER BY reviews_count DESC) as rn 
+		         FROM Rental WHERE rental_Type = #{c_rental_Type} ) as ranked WHERE rn=1; 
+		         
+		    </select>
+
+	
+<!-- ***************************************************************************************** -->
+
+
+
+	<select id="AllshowMainIndex" resultMap="indexDTO">
+	  
+			SELECT host_name, Rental_type, room_name, room_img, region, min_people, max_people, room_pay,
+			       room_num, address, info, service, deadline_C, sleep_type, startTime, endTime, useTime, Representative_photo ,admin_id, admin_name
+			FROM (
+			    SELECT host_name, Rental_type, room_name, room_img, region, min_people, max_people, room_pay,
+			           room_num, address, info, service, deadline_C, sleep_type, startTime, endTime, useTime, Representative_photo,admin_id, admin_name,
+			           ROW_NUMBER() OVER(PARTITION BY host_name ORDER BY host_name ASC) AS rn
+			    FROM Rental
+			    WHERE 
+			    <if test="C_rental_type != null and !C_rental_type.isEmpty()">
+			        Rental_type = #{C_rental_type}
+			    </if>
+			    <if test="C_region != null and !C_region.isEmpty()">
+			        <if test="C_rental_type != null and !C_rental_type.isEmpty()">
+			            AND
+			        </if>
+			        region IN
+			        <foreach item="item" index="index" collection="C_region.split(',')" open="(" separator="," close=")">
+			            #{item}
+			        </foreach>
+			    </if>
+			) AS ranked
+			WHERE rn = 1;
+		</select>
+
+	
+	<!-- 낮은 가격 정렬 -->
+	<select id="AllshowMainIndexOrderByPrice" resultMap="indexDTO">
+	    SELECT host_name,Rental_type ,room_name ,room_img ,region,min_people,
+	           max_people ,room_pay ,room_num,address ,
+	           info ,service  ,deadline_C,sleep_type ,
+	           startTime,endTime  ,useTime  ,
+	           Representative_photo,admin_id, admin_name
+	    FROM (
+	        SELECT host_name,Rental_type ,room_name ,room_img,
+	               region,min_people,max_people, room_pay,
+	               room_num,address,info,service,
+	               deadline_C,sleep_type,startTime,endTime,
+	               useTime,Representative_photo,admin_id, admin_name,
+	               ROW_NUMBER() OVER(PARTITION BY host_name ORDER BY room_pay ASC) AS rn
+	        FROM Rental
+	        WHERE 
+	        <if test="C_rental_type != null and !C_rental_type.isEmpty()">
+	            Rental_type = #{C_rental_type}
+	        </if>
+	        <if test="C_region != null and !C_region.isEmpty()">
+	            <if test="C_rental_type != null and !C_rental_type.isEmpty()">
+	                AND
+	            </if>
+	            region IN
+	            <foreach item="item" index="index" collection="C_region.split(',')" open="(" separator="," close=")">
+	                #{item}
+	            </foreach>
+	        </if>
+	    ) AS ranked
+	    WHERE rn = 1;
+	</select>
+
+	
+	<!-- 높은 가격 정렬 -->
+	<select id="AllshowMainIndexOrderByPriceDesc" resultMap="indexDTO">
+    SELECT host_name,Rental_type ,room_name ,room_img ,region,min_people,
+           max_people ,room_pay ,room_num,address ,
+           info ,service  ,deadline_C,sleep_type ,
+           startTime,endTime  ,useTime  ,
+           Representative_photo ,admin_id, admin_name
+    FROM (
+        SELECT host_name,Rental_type ,room_name ,room_img,
+               region,min_people,max_people, room_pay,
+               room_num,address,info,service,
+               deadline_C,sleep_type,startTime,endTime,
+               useTime,Representative_photo,admin_id, admin_name,
+               ROW_NUMBER() OVER(PARTITION BY host_name ORDER BY room_pay DESC) AS rn
+        FROM Rental
+        WHERE 
+        <if test="C_rental_type != null and !C_rental_type.isEmpty()">
+            Rental_type = #{C_rental_type}
+        </if>
+        <if test="C_region != null and !C_region.isEmpty()">
+            <if test="C_rental_type != null and !C_rental_type.isEmpty()">
+                AND
+            </if>
+            region IN
+            <foreach item="item" index="index" collection="C_region.split(',')" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    ) AS ranked
+    WHERE rn = 1;
+</select>
+
+	
+	<!-- 높은 후기 정렬 -->
+	<select id="AllshowMainIndexOrderByRating" resultMap="indexDTO">
+	    SELECT host_name,Rental_type ,room_name ,room_img ,region,min_people,
+	           max_people ,room_pay ,room_num,address ,
+	           info ,service  ,deadline_C,sleep_type ,
+	           startTime,endTime  ,useTime  ,
+	           Representative_photo ,admin_id, admin_name
+	    FROM (
+	        SELECT host_name,Rental_type, room_name, room_img,
+	               region,min_people,max_people, room_pay,
+	               room_num,address,info,service,
+	               deadline_C,sleep_type,startTime,endTime,
+	               useTime,Representative_photo, admin_id, admin_name,
+	               ROW_NUMBER() OVER(PARTITION BY host_name ORDER BY rating DESC) AS rn
+	        FROM Rental
+	        WHERE 
+	        <if test="C_rental_type != null and !C_rental_type.isEmpty()">
+	            Rental_type = #{C_rental_type}
+	        </if>
+	        <if test="C_region != null and !C_region.isEmpty()">
+	            <if test="C_rental_type != null and !C_rental_type.isEmpty()">
+	                AND
+	            </if>
+	            region IN
+	            <foreach item="item" index="index" collection="C_region.split(',')" open="(" separator="," close=")">
+	                #{item}
+	            </foreach>
+	        </if>
+	    ) AS ranked
+	    WHERE rn = 1;
+	</select>
+	
+	<select id="initialAllshowMainIndexOrderByReviews" resultMap= "indexDTO">
+		SELECT host_name,Rental_type ,room_name ,room_img ,region,min_people,
+	           max_people ,room_pay ,room_num,address ,
+	           info ,service  ,deadline_C,sleep_type ,
+	           startTime,endTime  ,useTime  ,
+	           Representative_photo ,admin_id, admin_name
+	    FROM (
+	        SELECT host_name,Rental_type, room_name, room_img,
+	               region,min_people,max_people, room_pay,
+	               room_num,address,info,service,
+	               deadline_C,sleep_type,startTime,endTime,
+	               useTime,Representative_photo, admin_id, admin_name,
+	               ROW_NUMBER() OVER(PARTITION BY host_name) AS rn
+	        FROM Rental	        
+	    ) AS ranked
+	    WHERE rn = 1;	
+	</select>
+
+	
+	<!-- 낮은 후기 정렬 -->
+	<select id= "AllshowMainIndexOrderByReviews" resultMap= "indexDTO">
+	 SELECT host_name,Rental_type ,room_name ,room_img ,region,min_people,
+	           max_people ,room_pay ,room_num,address ,
+	           info ,service  ,deadline_C,sleep_type ,
+	           startTime,endTime  ,useTime  ,
+	           Representative_photo ,admin_id, admin_name
+	    FROM (
+	        SELECT host_name,Rental_type, room_name, room_img,
+	               region,min_people,max_people, room_pay,
+	               room_num,address,info,service,
+	               deadline_C,sleep_type,startTime,endTime,
+	               useTime,Representative_photo, admin_id, admin_name,
+	               ROW_NUMBER() OVER(PARTITION BY host_name ORDER BY rating ASC) AS rn
+	        FROM Rental
+	        WHERE 
+	        <if test="C_rental_type != null and !C_rental_type.isEmpty()">
+	            Rental_type = #{C_rental_type}
+	        </if>
+	        <if test="C_region != null and !C_region.isEmpty()">
+	            <if test="C_rental_type != null and !C_rental_type.isEmpty()">
+	                AND
+	            </if>
+	            region IN
+	            <foreach item="item" index="index" collection="C_region.split(',')" open="(" separator="," close=")">
+	                #{item}
+	            </foreach>
+	        </if>
+	    ) AS ranked
+	    WHERE rn = 1;
+	</select>	
+
+
+<!-- ***************************************************************************************************************** -->
+	<select id="regionshowMainIndex" resultMap="indexDTO">
+	    SELECT host_name, Rental_type, room_name, room_img, region, min_people,
+	           max_people ,room_pay ,room_num,address ,
+	           info ,service  ,deadline_C,sleep_type ,
+	           startTime,endTime  ,useTime  ,
+	           Representative_photo ,admin_id, admin_name
+	    FROM (
+	        SELECT host_name,Rental_type ,room_name ,room_img,
+	               region,min_people,max_people, room_pay,
+	               room_num,address,info,service,
+	               deadline_C,sleep_type,startTime,endTime,
+	               useTime,Representative_photo, admin_id, admin_name,
+	               ROW_NUMBER() OVER(PARTITION BY host_name) AS rn
+	        FROM Rental
+	        WHERE 
+	        <if test="C_region != null and !C_region.isEmpty()">
+	            region IN
+	            <foreach item="item" index="index" collection="C_region.split(',')" open="(" separator="," close=")">
+	                #{item}
+	            </foreach>
+	        </if>
+	    ) AS ranked
+	    WHERE rn = 1;
+
+	</select>
+	
+	<!-- 낮은 가격 정렬 -->
+	<select id="regionshowMainIndexOrderByPrice" resultMap="indexDTO">
+	    SELECT host_name,Rental_type ,room_name ,room_img ,region,min_people,
+	           max_people ,room_pay ,room_num,address ,
+	           info ,service  ,deadline_C,sleep_type ,
+	           startTime,endTime  ,useTime  ,
+	           Representative_photo ,admin_id, admin_name
+	    FROM (
+	        SELECT host_name,Rental_type ,room_name ,room_img,
+	               region,min_people,max_people, room_pay,
+	               room_num,address,info,service,
+	               deadline_C,sleep_type,startTime,endTime,
+	               useTime,Representative_photo, admin_id, admin_name,
+	               ROW_NUMBER() OVER(PARTITION BY region ORDER BY room_pay ASC) AS rn
+	        FROM Rental
+	        WHERE 
+	        <if test="C_region != null and !C_region.isEmpty()">
+	            region IN
+	            <foreach item="item" index="index" collection="C_region.split(',')" open="(" separator="," close=")">
+	                #{item}
+	            </foreach>
+	        </if>
+	    ) AS ranked
+	    WHERE rn = 1;
+	</select>
+	
+	
+	<!-- 높은 가격 정렬 -->
+	<select id= "regionshowMainIndexOrderByPriceDesc" resultMap= "indexDTO">
+		   SELECT host_name,Rental_type ,room_name ,room_img ,region,min_people,
+	           max_people ,room_pay ,room_num,address ,
+	           info ,service  ,deadline_C,sleep_type ,
+	           startTime,endTime  ,useTime  ,
+	           Representative_photo ,admin_id, admin_name
+	    FROM (
+	        SELECT host_name,Rental_type ,room_name ,room_img,
+	               region,min_people,max_people, room_pay,
+	               room_num,address,info,service,
+	               deadline_C,sleep_type,startTime,endTime,
+	               useTime,Representative_photo, admin_id, admin_name,
+	               ROW_NUMBER() OVER(PARTITION BY region ORDER BY room_pay DESC) AS rn
+	        FROM Rental
+	        WHERE 
+	        <if test="C_region != null and !C_region.isEmpty()">
+	            region IN
+	            <foreach item="item" index="index" collection="C_region.split(',')" open="(" separator="," close=")">
+	                #{item}
+	            </foreach>
+	        </if>
+	    ) AS ranked
+	    WHERE rn = 1;
+	</select>
+
+
+	
+	<!-- 높은 후기 정렬 -->
+	<select id="regionshowMainIndexOrderByRating" resultMap="indexDTO">
+    SELECT host_name,Rental_type ,room_name ,room_img ,region,min_people,
+           max_people ,room_pay ,room_num,address ,
+           info ,service  ,deadline_C,sleep_type ,
+           startTime,endTime  ,useTime  ,
+           Representative_photo ,admin_id, admin_name
+    FROM (
+        SELECT host_name,Rental_type, room_name, room_img,
+               region,min_people,max_people, room_pay,
+               room_num,address,info,service,
+               deadline_C,sleep_type,startTime,endTime,
+               useTime,Representative_photo, admin_id, admin_name,
+               ROW_NUMBER() OVER(PARTITION BY region ORDER BY rating DESC) AS rn
+        FROM Rental
+        WHERE 
+        <if test="C_region != null and !C_region.isEmpty()">
+            region IN
+            <foreach item="item" index="index" collection="C_region.split(',')" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    ) AS ranked
+    WHERE rn = 1;
+</select>
+
+
+	
+	<!-- 낮은 후기 정렬 -->
+	<select id= "regionshowMainIndexOrderByReviews" resultMap= "indexDTO">
+		 SELECT host_name,Rental_type ,room_name ,room_img ,region,min_people,
+		           max_people ,room_pay ,room_num,address ,
+		           info ,service  ,deadline_C,sleep_type ,
+		           startTime,endTime  ,useTime  ,
+		           Representative_photo , admin_id, admin_name
+		    FROM (
+		        SELECT host_name,Rental_type, room_name, room_img,
+		               region,min_people,max_people, room_pay,
+		               room_num,address,info,service,
+		               deadline_C,sleep_type,startTime,endTime,
+		               useTime,Representative_photo, admin_id, admin_name,
+		               ROW_NUMBER() OVER(PARTITION BY region ORDER BY rating ASC) AS rn
+		        FROM Rental
+		        WHERE 
+		        <if test="C_region != null and !C_region.isEmpty()">
+		            region IN
+		            <foreach item="item" index="index" collection="C_region.split(',')" open="(" separator="," close=")">
+		                #{item}
+		            </foreach>
+		        </if>
+		    ) AS ranked
+		    WHERE rn = 1;
+		</select>
+
+		
+		
+		<select id="ImgSrcSetting">
+			SELECT room_img FROM Rental where room_name = #{imgSetting_RoomName}
+		</select>
+		
+		<select id="RepresentativemgSrcSetting" >
+		     SELECT Representative_photo
+			    FROM Rental
+			    WHERE host_name = #{hostName};
+				    
+		</select>
+		
+		<select id="su_dae" resultMap="host_nameDTO">
+			  SELECT
+		        MAX(CASE WHEN sleep_type = '대실' THEN sleep_type END) AS sleep_typeDae,
+		        MAX(CASE WHEN sleep_type = '대실' THEN room_pay END) AS room_payDae,
+		        
+		         MAX(CASE WHEN sleep_type = '숙박' THEN sleep_type END) AS sleep_typeSu,
+		        MAX(CASE WHEN sleep_type = '숙박' THEN room_pay END) AS room_paySu,
+		        
+		        MAX(CASE WHEN sleep_type = '대실' THEN useTime END) AS useTimeDae
+		    FROM Rental
+		    WHERE host_name = #{hostName}
+		    GROUP BY host_name;
+
+		</select>
+	
+</mapper>
+
+
